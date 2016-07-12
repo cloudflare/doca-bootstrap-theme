@@ -1,0 +1,51 @@
+{
+  "name": "doca-bootstrap-theme",
+  "version": "0.0.1",
+  "description": "Doca theme using Twitter Bootstrap",
+  "main": "index.js",
+  "author": "Vojtech Miksu <vojtech@cloudflare.com>",
+  "license": "None",
+  "repository": {
+    "type": "git",
+    "url": "https://stash.cfops.it/users/vojtech/repos/doca-bootstrap-theme"
+  },
+  "scripts": {
+    "build": "npm run clean && mkdir -p build && babel components --out-dir build",
+    "lint": "eslint components || true",
+    "prepublish": "cross-env NODE_ENV=production npm run build",
+    "clean": "rimraf build"
+  },
+  "files": [
+    "*.md",
+    "build",
+    "fonts",
+    "styles",
+    "assets"
+  ],
+  "dependencies": {
+    "lodash": "^4.13.1",
+    "react": "^15.2.0",
+    "react-dom": "^15.2.0",
+    "react-immutable-proptypes": "^1.7.1",
+    "react-marked-markdown": "^1.4.0",
+    "react-pure-render": "^1.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.8.0",
+    "babel-core": "^6.8.0",
+    "babel-eslint": "^6.1.1",
+    "babel-plugin-transform-class-properties": "^6.10.2",
+    "babel-plugin-transform-runtime": "^6.8.0",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "cross-env": "^1.0.8",
+    "eslint": "^3.0.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-loader": "^1.4.1",
+    "eslint-plugin-import": "^1.10.2",
+    "eslint-plugin-jsx-a11y": "^1.5.5",
+    "eslint-plugin-react": "^5.1.1",
+    "rimraf": "^2.5.3"
+  }
+}
