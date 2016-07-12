@@ -1,7 +1,6 @@
 const React = require('react');
 const Component = require('react-pure-render/component');
 const ImmutablePropTypes = require('react-immutable-proptypes');
-const _ = require('lodash');
 
 class Sidebar extends Component {
 

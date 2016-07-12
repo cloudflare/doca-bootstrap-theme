@@ -8,18 +8,18 @@ class App extends Component {
 
   static propTypes = {
     schemas: ImmutablePropTypes.list.isRequired,
-    title: React.PropTypes.string,
+    config: React.PropTypes.object,
   };
 
   render() {
-    const { schemas, title } = this.props;
+    const { schemas, config } = this.props;
 
     return (
       <div className="container">
         <header className="row">
           <hgroup className="col-lg-12">
             <div className="page-header">
-              <h1>{title}</h1>
+              <h1>{config.title}</h1>
             </div>
           </hgroup>
         </header>
