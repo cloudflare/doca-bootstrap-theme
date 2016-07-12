@@ -1,21 +1,39 @@
 const React = require('react');
 const ImmutablePropTypes = require('react-immutable-proptypes');
+const Component = require('react-pure-render/component');
+const Sidebar = require('./sidebar');
+const Schema = require('./schema');
 
 class App extends Component {
 
   static propTypes = {
     schemas: ImmutablePropTypes.list.isRequired,
+    title: React.PropTypes.string,
   };
 
   render() {
-    const { schemas } = this.props;
+    const { schemas, title } = this.props;
 
     return (
-      <div>
-        {schemas
-          .valueSeq()
-          .map(schema => <div key={schema.get('id')}>{schema.get('title')}</div>)
-        }
+      <div className="container">
+        <header className="row">
+          <hgroup className="col-lg-12">
+            <div className="page-header">
+              <h1>{title}</h1>
+            </div>
+          </hgroup>
+        </header>
+
+        <div className="row">
+          <Sidebar schemas={schemas} />
+          <div className="col-lg-9">
+            {schemas
+              .filter(schema => !schema.get('hidden'))
+              .valueSeq()
+              .map(schema => <Schema key={schema.get('id')} schema={schema} />)
+            }
+          </div>
+        </div>
       </div>
     );
   }
