@@ -15,7 +15,7 @@ This creates a new API documentation with `doca-bootstrap-theme` as a dependency
 
 # How to create your own theme
 
-**The best way is to fork and modify this repository.** The integration with doca is pretty loose and it makes just few assumptions about your theme.
+**The best way is to fork and modify this repository.** The integration with doca is pretty loose and it makes just a few assumptions about your theme.
 
 
 ## React Components
