@@ -4,7 +4,7 @@
   "description": "Doca theme using Twitter Bootstrap",
   "main": "index.js",
   "author": "Vojtech Miksu <vojtech@cloudflare.com>",
-  "license": "None",
+  "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
     "url": "https://stash.cfops.it/users/vojtech/repos/doca-bootstrap-theme"
