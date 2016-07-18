@@ -1,13 +1,13 @@
 {
   "name": "doca-bootstrap-theme",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "Doca theme using Twitter Bootstrap",
   "main": "index.js",
-  "author": "Vojtech Miksu <vojtech@cloudflare.com>",
+  "author": "Vojtech Miksu <vojtech@miksu.cz>",
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://stash.cfops.it/users/vojtech/repos/doca-bootstrap-theme"
+    "url": "https://github.com/cloudflare/doca-bootstrap-theme"
   },
   "scripts": {
     "build": "npm run clean && mkdir -p build && babel components --out-dir build",

@@ -2,13 +2,13 @@
 
 Simple [Twitter Boostrap 3](http://getbootstrap.com/) based theme for [doca](github.com/cloudflare/doca).
 
-It's supposed to be used in combination with [doca](github.com/cloudflare/doca) - a tool that scaffolds API documentation based on JSON HyperSchemas.
+It's supposed to be used in combination with [doca](https://github.com/cloudflare/doca) - a tool that scaffolds API documentation based on JSON HyperSchemas.
 
 ## Usage
 
 ```
 npm install -g doca
-doca bootstrap
+doca -t bootstrap
 ```
 
 This creates a new API documentation with `doca-bootstrap-theme` as a dependency.
