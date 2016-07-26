@@ -1,6 +1,6 @@
 # doca-bootstrap-theme
 
-Simple [Twitter Boostrap 3](http://getbootstrap.com/) based theme for [doca](github.com/cloudflare/doca).
+Simple [Twitter Boostrap 3](http://getbootstrap.com/) based theme for [doca](https://github.com/cloudflare/doca).
 
 It's supposed to be used in combination with [doca](https://github.com/cloudflare/doca) - a tool that scaffolds API documentation based on JSON HyperSchemas.
 
