@@ -8,7 +8,7 @@ It's supposed to be used in combination with [doca](https://github.com/cloudflar
 
 ```
 npm install -g doca
-doca -t bootstrap
+doca init -t bootstrap
 ```
 
 This creates a new API documentation with `doca-bootstrap-theme` as a dependency.
