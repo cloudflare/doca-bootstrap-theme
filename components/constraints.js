@@ -13,10 +13,7 @@ class Constraints extends Component {
     return (
       <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
         {constraints.has('default') &&
-          (constraints.get('type') === 'boolean' ?
-            (constraints.get('default') ? 'default value: true' : 'default value: false') :
-            `default value: ${constraints.get('default')}`
-          )
+          <li>{`default value: ${constraints.get('default')}`}</li>
         }
 
         {(constraints.get('minLength') || constraints.get('minLength') === 0) &&
