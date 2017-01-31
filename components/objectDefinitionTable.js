@@ -26,7 +26,7 @@ class ObjectDefinitionTable extends Component {
           {definitions && definitions.entrySeq().map(([key, definition]) =>
             <tr key={key}>
               <td>
-                <strong>{key.toLowerCase()}</strong><br />
+                <strong>{key}</strong><br />
                 <small><em>{definition.get('type')}</em></small>
               </td>
               <td>
