@@ -16,8 +16,8 @@ class Endpoint extends Component {
     return (
       <section key={link.get('html_id')} id={link.get('html_id')} className="list-group-item">
         <h3>
-          <span className="label label-success">{link.get('method')}</span>{' '}
-          {link.get('title')}
+          <div className="label label-success">{link.get('method')}</div>{' '}
+          <div className="endpoint-title">{link.get('title')}</div>
         </h3>
         {link.get('description') && <MarkdownPreview value={link.get('description')} />}
         <pre>

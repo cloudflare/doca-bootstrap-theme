@@ -11,7 +11,7 @@ class Constraints extends Component {
     const { constraints } = this.props;
     if (!constraints) return <div />;
     return (
-      <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
+      <ul className="constraints">
         {constraints.has('default') &&
           <li>{`default value: ${constraints.get('default')}`}</li>
         }
