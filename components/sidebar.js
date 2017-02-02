@@ -78,10 +78,13 @@ class Sidebar extends Component {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop ||
                       document.body.scrollTop || 0;
 
-    // finds the first link that has top offset > top sroll position and breaks
+    // finds the first link that has top offset > top scroll position and breaks
     let activeId = null;
+    // a small offset so the coming section is highlighted a bit sooner
+    // before its main title touches the top of browser and starts disappearing
+    const VERTICAL_OFFSET = 30;
     for (let i = 0; i < ids.length; i++) {
-      if (offsetTop(document.getElementById(ids[i])) - 200 > scrollTop) {
+      if (offsetTop(document.getElementById(ids[i])) - VERTICAL_OFFSET > scrollTop) {
         activeId = ids[i > 0 ? i - 1 : i];
         break;
       }
