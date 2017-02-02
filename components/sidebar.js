@@ -4,6 +4,18 @@ const ImmutablePropTypes = require('react-immutable-proptypes');
 const _ = require('lodash');
 const offsetTop = require('./helpers').offsetTop;
 
+
+const getLinks = (links, search) =>
+  links
+    .filter(link => {
+      if (link.get('private')) return false;
+      if (search &&
+        link.get('title').toLowerCase().indexOf(search.toLowerCase()) === -1) {
+        return false;
+      }
+      return true;
+    });
+
 class Sidebar extends Component {
 
   static propTypes = {
@@ -85,26 +97,34 @@ class Sidebar extends Component {
 
   render() {
     const { schemas } = this.props;
+    const { activeId, search } = this.state;
 
     return (
       <nav id="sidebar-wrapper">
         <div className="search">
-          <input type="text" placeholder="Search..." />
+          <input
+            type="text"
+            placeholder="Search..."
+            value={search}
+            onChange={this.handleSearchChange}
+          />
         </div>
         {schemas.filter(schema => !schema.get('hidden')).valueSeq().map(schema =>
-          <ul className="sidebar-nav" key={schema.get('id')}>
-            <li className="sidebar-category">{schema.get('title')}</li>
-            {schema.get('links').valueSeq().map(link =>
-              <li
-                key={link.get('html_id')}
-                className={link.get('html_id') === this.state.activeId ? 'active' : ''}
-              >
-                <a href={`#${link.get('html_id')}`}>
-                  {link.get('title')}
-                </a>
-              </li>
-            )}
-          </ul>
+          (getLinks(schema.get('links'), search).count() > 0 ?
+            <ul className="sidebar-nav" key={schema.get('id')}>
+              <li className="sidebar-category">{schema.get('title')}</li>
+              {getLinks(schema.get('links'), search).valueSeq().map(link =>
+                <li
+                  key={link.get('html_id')}
+                  className={link.get('html_id') === activeId ? 'active' : ''}
+                >
+                  <a href={`#${link.get('html_id')}`}>
+                    {link.get('title')}
+                  </a>
+                </li>
+              )}
+            </ul>
+          : null)
         )}
       </nav>
     );
