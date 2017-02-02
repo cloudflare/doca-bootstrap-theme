@@ -15,23 +15,20 @@ class App extends Component {
     const { schemas, config } = this.props;
 
     return (
-      <div className="container">
-        <header className="row">
-          <hgroup className="col-lg-12">
-            <div className="page-header">
-              <h1>{config.title}</h1>
+      <div id="wrapper">
+        <Sidebar schemas={schemas} />
+        <div id="page-content-wrapper">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-lg-12">
+                <h1>{config.title}</h1>
+                {schemas
+                  .filter(schema => !schema.get('hidden'))
+                  .valueSeq()
+                  .map(schema => <Schema key={schema.get('id')} schema={schema} />)
+                }
+              </div>
             </div>
-          </hgroup>
-        </header>
-
-        <div className="row">
-          <Sidebar schemas={schemas} />
-          <div className="col-lg-9">
-            {schemas
-              .filter(schema => !schema.get('hidden'))
-              .valueSeq()
-              .map(schema => <Schema key={schema.get('id')} schema={schema} />)
-            }
           </div>
         </div>
       </div>

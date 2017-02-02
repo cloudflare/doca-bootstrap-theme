@@ -32,23 +32,16 @@ class Schema extends Component {
           <h2>{schema.get('title')}</h2>
         </div>
         <div className="panel-body">
-          <h4>{schema.get('description')}</h4>
+          <h3>{schema.get('description')}</h3>
           {schema.get('extended_description') &&
             <MarkdownPreview value={schema.get('extended_description')} />}
 
-          <header>
-            <h4 id={`${schema.get('html_id')}-properties`}>
-              Object definition{schema.getIn(['object_definition', 'objects']).count() > 0 &&
-                <span>s</span>}
-            </h4>
-            <p>View properties and constraints defined on the object</p>
-
+          <header id={`${schema.get('html_id')}-properties`}>
             {IS_JAVASCRIPT &&
               <p>
-                <a onClick={this.handleToggle} className="btn btn-warning">
+                <a onClick={this.handleToggle} className="btn btn-info">
                   <span>{showDefinition ? 'Hide' : 'Show'}</span>{' '}
-                  definition{schema.getIn(['object_definition', 'objects']).count() > 0 &&
-                    <span>s</span>}
+                  properties and constraints defined on the object
                 </a>
               </p>
             }

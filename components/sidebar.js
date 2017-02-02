@@ -12,20 +12,18 @@ class Sidebar extends Component {
     const { schemas } = this.props;
 
     return (
-      <nav className="col-lg-3">
+      <nav id="sidebar-wrapper">
         {schemas.filter(schema => !schema.get('hidden')).valueSeq().map(schema =>
-          <div className="panel panel-default" key={schema.get('id')}>
-            <div className="panel-heading"><h4>{schema.get('title')}</h4></div>
-            <ul className="nav nav-pills nav-stacked">
-              {schema.get('links').valueSeq().map(link =>
-                <li key={link.get('html_id')}>
-                  <a href={`#${link.get('html_id')}`}>
-                    {link.get('title')}
-                  </a>
-                </li>
-              )}
-            </ul>
-          </div>
+          <ul className="sidebar-nav" key={schema.get('id')}>
+            <li className="sidebar-category">{schema.get('title')}</li>
+            {schema.get('links').valueSeq().map(link =>
+              <li key={link.get('html_id')}>
+                <a href={`#${link.get('html_id')}`}>
+                  {link.get('title')}
+                </a>
+              </li>
+            )}
+          </ul>
         )}
       </nav>
     );
