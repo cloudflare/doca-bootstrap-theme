@@ -238,3 +238,22 @@ pre {
   padding-left: 0px;
   line-height: 25px
 }
+
+.search {
+  text-align: center;
+  margin: 25px;
+}
+
+.search > input {
+  background: #000;
+  border-width: 0 0 1px 0;
+  border-color: #666;
+  padding: 6px 0px 6px 0px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 25px;
+  outline: none;
+  color: #fff;
+  border-radius: 0;
+}
+

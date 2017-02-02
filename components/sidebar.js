@@ -13,6 +13,9 @@ class Sidebar extends Component {
 
     return (
       <nav id="sidebar-wrapper">
+        <div className="search">
+          <input type="text" placeholder="Search..." />
+        </div>
         {schemas.filter(schema => !schema.get('hidden')).valueSeq().map(schema =>
           <ul className="sidebar-nav" key={schema.get('id')}>
             <li className="sidebar-category">{schema.get('title')}</li>
