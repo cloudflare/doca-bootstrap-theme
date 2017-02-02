@@ -17,17 +17,19 @@ class ObjectDefinitionTable extends Component {
       <table className="table table-hover">
         <thead>
           <tr>
-            <th>Name <small>/type</small></th>
-            <th>Description <small>/example</small></th>
-            <th>Constraints</th>
+            <th><p>Name <small>/type</small></p></th>
+            <th><p>Description <small>/example</small></p></th>
+            <th><p>Constraints</p></th>
           </tr>
         </thead>
         <tbody>
           {definitions && definitions.entrySeq().map(([key, definition]) =>
             <tr key={key}>
               <td>
-                <strong>{key}</strong><br />
-                <small><em>{definition.get('type')}</em></small>
+                <p>
+                  <strong>{key}</strong><br />
+                  <small><em>{definition.get('type')}</em></small>
+                </p>
               </td>
               <td>
                 {definition.get('description') &&
