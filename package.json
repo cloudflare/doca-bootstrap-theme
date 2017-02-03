@@ -1,6 +1,6 @@
 {
   "name": "doca-bootstrap-theme",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Doca theme using Twitter Bootstrap",
   "main": "index.js",
   "author": "Vojtech Miksu <vojtech@miksu.cz>",
@@ -24,6 +24,7 @@
   ],
   "dependencies": {
     "immutable": "^3.8.1",
+    "lodash": "^4.13.1",
     "react": "^15.2.0",
     "react-dom": "^15.2.0",
     "react-immutable-proptypes": "^1.7.1",
