@@ -27,7 +27,7 @@ class ObjectDefinitionTable extends Component {
             <tr key={key}>
               <td>
                 <p>
-                  <strong>{key.toLowerCase()}</strong><br />
+                  <strong>{key}</strong><br />
                   <small><em>{definition.get('type')}</em></small>
                 </p>
               </td>
