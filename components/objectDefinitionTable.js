@@ -29,8 +29,8 @@ class ObjectDefinitionTable extends Component {
               <td>
                 <p>
                   <strong>{key}</strong><br />
-                  <small><em>{List.isList(definition.get('type')) ? 
-                  definition.get('type').valueSeq().join(', ') : 
+                  <small><em>{List.isList(definition.get('type')) ?
+                  definition.get('type').valueSeq().join(', ') :
                   definition.get('type')}</em></small>
                 </p>
               </td>
