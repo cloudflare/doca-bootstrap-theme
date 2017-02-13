@@ -1,6 +1,7 @@
 const React = require('react');
 const Constraints = require('./constraints');
 const MarkdownPreview = require('react-marked-markdown').MarkdownPreview;
+const List = require('immutable').List;
 const ImmutablePropTypes = require('react-immutable-proptypes');
 const Component = require('react-pure-render/component');
 const Definition = require('./definition');
@@ -28,7 +29,9 @@ class ObjectDefinitionTable extends Component {
               <td>
                 <p>
                   <strong>{key}</strong><br />
-                  <small><em>{definition.get('type')}</em></small>
+                  <small><em>{List.isList(definition.get('type')) ?
+                  definition.get('type').valueSeq().join(', ') :
+                  definition.get('type')}</em></small>
                 </p>
               </td>
               <td>
