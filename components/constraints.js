@@ -1,6 +1,5 @@
 const React = require('react');
 const Component = require('react-pure-render/component');
-const ImmutablePropTypes = require('react-immutable-proptypes');
 const _ = require('lodash/core');
 
 class Constraints extends Component {
@@ -8,6 +7,16 @@ class Constraints extends Component {
   static propTypes = {
     constraints: React.PropTypes.object,
   };
+
+  considerType(value) {
+    if (_.isString(value)) {
+      return `"${value}"`;
+    }
+    if (_.isNull(value)) {
+      return 'null';
+    }
+    return value;
+  }
 
   render() {
     const { constraints } = this.props;
@@ -35,9 +44,10 @@ class Constraints extends Component {
         }
 
         {constraints.get('enum') ?
-          <li>valid values: {constraints.get('enum').valueSeq().map( value =>
+          <li>valid values: {constraints.get('enum').valueSeq().map(value =>
             <code key={value}>{this.considerType(value)}</code>
-          ).reduce( (prev, curr) => [prev, ', ', curr] ) }</li>
+          )
+          .reduce((prev, curr) => [prev, ', ', curr])}</li>
         :
           constraints.get('type') === 'boolean' && <li>valid values: (true,false)</li>
         }
@@ -47,17 +57,6 @@ class Constraints extends Component {
         {constraints.get('notes') && <li>notes: {constraints.get('notes')}</li>}
       </ul>
     );
-  }
-
-  considerType (value) {
-
-    if(_.isString(value)){
-      return "\"" + value + "\"";
-    }
-    if(_.isNull(value)){
-      return "null";
-    }
-    return value;
   }
 
 }
