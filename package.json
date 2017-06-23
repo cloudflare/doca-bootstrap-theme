@@ -1,13 +1,13 @@
 {
-  "name": "doca-bootstrap-theme",
+  "name": "doca-lti-theme",
   "version": "0.2.1",
-  "description": "Doca theme using Twitter Bootstrap",
+  "description": "Doca theme using Twitter Bootstrap for LTI",
   "main": "index.js",
   "author": "Vojtech Miksu <vojtech@miksu.cz>",
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cloudflare/doca-bootstrap-theme"
+    "url": "https://github.com/rivernate/doca-lti-theme"
   },
   "scripts": {
     "build": "npm run clean && mkdir -p build && babel components --out-dir build",
