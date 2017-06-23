@@ -1,5 +1,4 @@
 const React = require('react');
-const Endpoint = require('./endpoint');
 const ObjectDefinitionTable = require('./objectDefinitionTable');
 const MarkdownPreview = require('react-marked-markdown').MarkdownPreview;
 const ImmutablePropTypes = require('react-immutable-proptypes');
@@ -75,14 +74,6 @@ class Schema extends Component {
                 </div>
               }
             </div>
-          }
-        </div>
-        <div className="list-group">
-          {schema
-            .get('links')
-            .filter(link => !link.get('private'))
-            .valueSeq()
-            .map(link => <Endpoint key={link.get('html_id')} link={link} />)
           }
         </div>
       </article>
