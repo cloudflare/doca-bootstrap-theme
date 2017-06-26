@@ -101,7 +101,7 @@ class Sidebar extends Component {
   render() {
     const {schemas} = this.props;
     const {activeId, search} = this.state;
-
+    const visibleSchemas = schemas.filter(schema => !schema.get('hidden'))
     return (
       <nav id="sidebar-wrapper">
         <div className="search">
@@ -113,9 +113,22 @@ class Sidebar extends Component {
           />
         </div>
         <ul className="sidebar-nav">
+          <li className="sidebar-category">Media Types</li>
+        </ul>
+        {visibleSchemas.filter(schema => schema.get('mediaType')).valueSeq().map(schema =>
+          <li
+            key={schema.get('html_id')}
+            className={schema.get('html_id') === activeId ? 'active' : ''}
+          >
+            <a href={`#${schema.get('html_id')}`}>
+              {schema.get('title')}
+            </a>
+          </li>
+        )}
+        <ul className="sidebar-nav">
           <li className="sidebar-category">Models</li>
         </ul>
-        {schemas.filter(schema => !schema.get('hidden')).valueSeq().map(schema =>
+        {visibleSchemas.filter(schema => !schema.get('mediaType')).valueSeq().map(schema =>
           <li
             key={schema.get('html_id')}
             className={schema.get('html_id') === activeId ? 'active' : ''}

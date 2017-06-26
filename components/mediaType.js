@@ -28,7 +28,7 @@ class MediaType extends Component {
       <article className="panel panel-primary">
         <div className="panel-heading">
           <div id={schema.get('html_id')} />
-          <h2>{schema.get('mediaType')}</h2>
+          <h2>{schema.get('title')} - {schema.get('mediaType')}</h2>
         </div>
         <div className="panel-body">
           <h3>{schema.get('description')}</h3>

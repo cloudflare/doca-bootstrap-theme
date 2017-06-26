@@ -22,13 +22,14 @@ class App extends Component {
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-12">
-                <h1>{config.title}</h1>
+                <h1>{config.title} MediaTypes</h1>
                 {visibleSchemas
                   .filter(schema => schema.get('mediaType'))
                   .valueSeq()
                   .map(schema => <MediaType key={schema.get('id')} schema={schema} />
                   )
                 }
+                <h1>{config.title} Models</h1>
                 {visibleSchemas
                   .filter(schema => !schema.get('mediaType'))
                   .valueSeq()
