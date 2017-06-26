@@ -43,11 +43,11 @@ class Sidebar extends Component {
   }
 
   handleSearchChange = (e) => {
-    this.setState({ search: e.target.value });
+    this.setState({search: e.target.value});
   }
 
   cancelSearch = () => {
-    this.setState({ search: '' });
+    this.setState({search: ''});
   }
 
   handleKeydown = (e) => {
@@ -61,22 +61,22 @@ class Sidebar extends Component {
   handleScroll = () => {
     // list of all link #ids
     const ids = this.props.schemas.reduce((result, schema) => {
-      let res = result;
-      if (!schema.get('hidden')) {
-        res = res.concat([`${schema.get('html_id')}-properties`]);
+        let res = result;
+        if (!schema.get('hidden')) {
+          res = res.concat([`${schema.get('html_id')}-properties`]);
+        }
+        return res.concat(
+          schema
+            .get('links')
+            .filter(link => !link.get('private'))
+            .map(link => link.get('html_id'))
+            .toJS()
+        );
       }
-      return res.concat(
-        schema
-          .get('links')
-          .filter(link => !link.get('private'))
-          .map(link => link.get('html_id'))
-          .toJS()
-      );
-    }
-    , []);
+      , []);
 
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop ||
-                      document.body.scrollTop || 0;
+      document.body.scrollTop || 0;
 
     // finds the first link that has top offset > top scroll position and breaks
     let activeId = null;
@@ -92,16 +92,16 @@ class Sidebar extends Component {
 
     // updates URL bar
     if (global.history) {
-      global.history.replaceState({ id: activeId }, activeId, `#${activeId}`);
+      global.history.replaceState({id: activeId}, activeId, `#${activeId}`);
     }
 
-    this.setState({ activeId });
+    this.setState({activeId});
   }
 
   render() {
-    const { schemas } = this.props;
-    const { activeId, search } = this.state;
-
+    const {schemas} = this.props;
+    const {activeId, search} = this.state;
+    const visibleSchemas = schemas.filter(schema => !schema.get('hidden'))
     return (
       <nav id="sidebar-wrapper">
         <div className="search">
@@ -112,22 +112,31 @@ class Sidebar extends Component {
             onChange={this.handleSearchChange}
           />
         </div>
-        {schemas.filter(schema => !schema.get('hidden')).valueSeq().map(schema =>
-          (getLinks(schema.get('links'), search).count() > 0 ?
-            <ul className="sidebar-nav" key={schema.get('id')}>
-              <li className="sidebar-category">{schema.get('title')}</li>
-              {getLinks(schema.get('links'), search).valueSeq().map(link =>
-                <li
-                  key={link.get('html_id')}
-                  className={link.get('html_id') === activeId ? 'active' : ''}
-                >
-                  <a href={`#${link.get('html_id')}`}>
-                    {link.get('title')}
-                  </a>
-                </li>
-              )}
-            </ul>
-          : null)
+        <ul className="sidebar-nav">
+          <li className="sidebar-category">Media Types</li>
+        </ul>
+        {visibleSchemas.filter(schema => schema.get('mediaType')).valueSeq().map(schema =>
+          <li
+            key={schema.get('html_id')}
+            className={schema.get('html_id') === activeId ? 'active' : ''}
+          >
+            <a href={`#${schema.get('html_id')}`}>
+              {schema.get('title')}
+            </a>
+          </li>
+        )}
+        <ul className="sidebar-nav">
+          <li className="sidebar-category">Models</li>
+        </ul>
+        {visibleSchemas.filter(schema => !schema.get('mediaType')).valueSeq().map(schema =>
+          <li
+            key={schema.get('html_id')}
+            className={schema.get('html_id') === activeId ? 'active' : ''}
+          >
+            <a href={`#${schema.get('html_id')}`}>
+              {schema.get('title')}
+            </a>
+          </li>
         )}
       </nav>
     );
