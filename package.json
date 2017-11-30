@@ -1,6 +1,6 @@
 {
   "name": "doca-bootstrap-theme",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Doca theme using Twitter Bootstrap",
   "main": "index.js",
   "author": "Vojtech Miksu <vojtech@miksu.cz>",
@@ -30,6 +30,9 @@
     "react-immutable-proptypes": "^1.7.1",
     "react-marked-markdown": "^1.4.0",
     "react-pure-render": "^1.0.2"
+  },
+  "peerDependencies": {
+    "json-schema-example-loader": "^3.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.8.0",
