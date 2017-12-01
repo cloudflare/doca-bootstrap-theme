@@ -261,3 +261,14 @@ pre {
   border-radius: 0;
 }
 
+code {
+  max-height: 16.66667em;
+  max-width: 30em;
+  overflow: scroll;
+  white-space: pre;
+}
+
+li.read-only {
+  font-weight: bolder;
+  font-style: italic ;
+}

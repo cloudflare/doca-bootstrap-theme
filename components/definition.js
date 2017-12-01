@@ -8,6 +8,8 @@ class Definition extends Component {
 
   static propTypes = {
     definitions: ImmutablePropTypes.map,
+    contextId: React.PropTypes.string,
+    fieldPointer: React.PropTypes.string,
   };
 
   state = {

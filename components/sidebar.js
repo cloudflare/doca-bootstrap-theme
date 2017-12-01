@@ -8,7 +8,7 @@ const offsetTop = require('./helpers').offsetTop;
 const getLinks = (links, search) =>
   links
     .filter(link => {
-      if (link.get('private')) return false;
+      if (link.get('cfPrivate')) return false;
       if (search &&
         link.get('title').toLowerCase().indexOf(search.toLowerCase()) === -1) {
         return false;
@@ -62,13 +62,14 @@ class Sidebar extends Component {
     // list of all link #ids
     const ids = this.props.schemas.reduce((result, schema) => {
       let res = result;
-      if (!schema.get('hidden')) {
+      if (!schema.get('cfHidden')) {
+        res = res.concat([schema.get('html_id')]);
         res = res.concat([`${schema.get('html_id')}-properties`]);
       }
       return res.concat(
         schema
           .get('links')
-          .filter(link => !link.get('private'))
+          .filter(link => !link.get('cfPrivate'))
           .map(link => link.get('html_id'))
           .toJS()
       );
@@ -112,10 +113,10 @@ class Sidebar extends Component {
             onChange={this.handleSearchChange}
           />
         </div>
-        {schemas.filter(schema => !schema.get('hidden')).valueSeq().map(schema =>
+        {schemas.filter(schema => !schema.get('cfHidden')).valueSeq().map(schema =>
           (getLinks(schema.get('links'), search).count() > 0 ?
             <ul className="sidebar-nav" key={schema.get('id')}>
-              <li className="sidebar-category">{schema.get('title')}</li>
+              <li className="sidebar-category"><a href={`#${schema.get('html_id')}`}>{schema.get('title')}</a></li>
               {getLinks(schema.get('links'), search).valueSeq().map(link =>
                 <li
                   key={link.get('html_id')}

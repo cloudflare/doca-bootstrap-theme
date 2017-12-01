@@ -23,8 +23,27 @@ class Constraints extends Component {
     if (!constraints) return <div />;
     return (
       <ul className="constraints">
+        {constraints.get('readOnly') && <li className="read-only">read only</li>}
         {constraints.has('default') &&
           <li>{`default value: ${constraints.get('default')}`}</li>
+        }
+
+        {(constraints.get('minItems') || constraints.get('minItems') === 0) &&
+          <li>min length: {constraints.get('minItems')}</li>
+        }
+
+        {(constraints.get('maxItems') || constraints.get('maxItems') === 0) &&
+          <li>max length: {constraints.get('maxItems')}</li>
+        }
+
+        {constraints.get('uniqueItems') && <li>unique items</li>}
+
+        {(constraints.get('minProperties') || constraints.get('minProperties') === 0) &&
+          <li>min length: {constraints.get('minProperties')}</li>
+        }
+
+        {(constraints.get('maxProperties') || constraints.get('maxProperties') === 0) &&
+          <li>max length: {constraints.get('maxProperties')}</li>
         }
 
         {(constraints.get('minLength') || constraints.get('minLength') === 0) &&
@@ -36,11 +55,17 @@ class Constraints extends Component {
         }
 
         {(constraints.get('minimum') || constraints.get('minimum') === 0) &&
-          <li>min value: {constraints.get('minimum')}</li>
+          <li>
+            min value{constraints.get('exclusiveMinimum') && ' (exclusive)'}:
+            {constraints.get('minimum')}
+          </li>
         }
 
         {(constraints.get('maximum') || constraints.get('maximum') === 0) &&
-          <li>max value: {constraints.get('maximum')}</li>
+          <li>
+            max value{constraints.get('exclusiveMaximum') && ' (exclusive)'}:
+            {constraints.get('maximum')}
+          </li>
         }
 
         {constraints.get('enum') ?
@@ -52,9 +77,8 @@ class Constraints extends Component {
           constraints.get('type') === 'boolean' && <li>valid values: (true,false)</li>
         }
 
-        {constraints.get('readOnly') && <li>read only</li>}
         {constraints.get('pattern') && <li>pattern: {constraints.get('pattern')}</li>}
-        {constraints.get('notes') && <li>notes: {constraints.get('notes')}</li>}
+        {constraints.get('cfNotes') && <li>notes: {constraints.get('cfNotes')}</li>}
       </ul>
     );
   }

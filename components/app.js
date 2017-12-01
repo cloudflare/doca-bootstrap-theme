@@ -23,7 +23,7 @@ class App extends Component {
               <div className="col-lg-12">
                 <h1>{config.title}</h1>
                 {schemas
-                  .filter(schema => !schema.get('hidden'))
+                  .filter(schema => !schema.get('cfHidden'))
                   .valueSeq()
                   .map(schema => <Schema key={schema.get('id')} schema={schema} />)
                 }
