@@ -33,6 +33,8 @@ class Endpoint extends Component {
                   link.getIn(['parameters', 'required_props']).indexOf(key) > -1
                 )
               }
+              contextId={link.get('title')}
+              fieldPointer="/properties"
             />
           </div>
         }
@@ -46,6 +48,8 @@ class Endpoint extends Component {
                   link.getIn(['parameters', 'optional_props']).indexOf(key) > -1
                 )
               }
+              contextId={link.get('title')}
+              fieldPointer="/properties"
             />
           </div>
         }

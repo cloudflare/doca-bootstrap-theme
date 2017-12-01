@@ -51,7 +51,7 @@ class Schema extends Component {
             <div>
               {schema.getIn(['object_definition', 'objects']).count() ?
                 <div>
-                  {schema.getIn(['object_definition', 'objects']).valueSeq().map(obj =>
+                  {schema.getIn(['object_definition', 'objects']).valueSeq().map((obj, index) =>
                     <div key={obj.get('title')}>
                       {obj.get('title') &&
                         <div>
@@ -59,7 +59,14 @@ class Schema extends Component {
                         </div>
                       }
                       {obj.get('example') && <ExampleObject example={obj.get('example')} />}
-                      <ObjectDefinitionTable definitions={obj.get('all_props')} />
+                      <ObjectDefinitionTable
+                        definitions={obj.get('all_props')}
+                        contextId={obj.get('title')}
+                        fieldPointer={
+                          '/' + schema.getIn(['object_definition', 'which_of']) +
+                          '/' + index + '/properties'
+                        }
+                      />
                     </div>
                   )}
                 </div>
@@ -71,6 +78,8 @@ class Schema extends Component {
 
                   <ObjectDefinitionTable
                     definitions={schema.getIn(['object_definition', 'all_props'])}
+                    contextId={schema.getIn(['object_definition', 'title'])}
+                    fieldPointer="/properties"
                   />
                 </div>
               }
