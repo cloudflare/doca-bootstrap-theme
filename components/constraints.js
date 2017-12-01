@@ -23,6 +23,7 @@ class Constraints extends Component {
     if (!constraints) return <div />;
     return (
       <ul className="constraints">
+        {constraints.get('readOnly') && <li className="read-only">read only</li>}
         {constraints.has('default') &&
           <li>{`default value: ${constraints.get('default')}`}</li>
         }
@@ -76,7 +77,6 @@ class Constraints extends Component {
           constraints.get('type') === 'boolean' && <li>valid values: (true,false)</li>
         }
 
-        {constraints.get('readOnly') && <li>read only</li>}
         {constraints.get('pattern') && <li>pattern: {constraints.get('pattern')}</li>}
         {constraints.get('cfNotes') && <li>notes: {constraints.get('cfNotes')}</li>}
       </ul>

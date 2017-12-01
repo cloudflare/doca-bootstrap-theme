@@ -267,3 +267,8 @@ code {
   overflow: scroll;
   white-space: pre;
 }
+
+li.read-only {
+  font-weight: bolder;
+  font-style: italic ;
+}
