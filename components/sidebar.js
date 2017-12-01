@@ -63,6 +63,7 @@ class Sidebar extends Component {
     const ids = this.props.schemas.reduce((result, schema) => {
       let res = result;
       if (!schema.get('cfHidden')) {
+        res = res.concat([schema.get('html_id')]);
         res = res.concat([`${schema.get('html_id')}-properties`]);
       }
       return res.concat(
@@ -115,7 +116,7 @@ class Sidebar extends Component {
         {schemas.filter(schema => !schema.get('cfHidden')).valueSeq().map(schema =>
           (getLinks(schema.get('links'), search).count() > 0 ?
             <ul className="sidebar-nav" key={schema.get('id')}>
-              <li className="sidebar-category">{schema.get('title')}</li>
+              <li className="sidebar-category"><a href={`#${schema.get('html_id')}`}>{schema.get('title')}</a></li>
               {getLinks(schema.get('links'), search).valueSeq().map(link =>
                 <li
                   key={link.get('html_id')}
